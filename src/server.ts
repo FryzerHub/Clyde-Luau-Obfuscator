@@ -25,6 +25,10 @@ app.use(express.json());
 
 app.use(express.static(join(__dirname, "..", "public")));
 
+app.get(["/", "/index.html"], (req: express.Request, res: express.Response) => {
+  res.sendFile(join(__dirname, "..", "index.html"));
+});
+
 app.post("/api/validate", (req: express.Request, res: express.Response) => {
   try {
     const { code } = req.body;
